@@ -1,4 +1,5 @@
 import './App.css';
+import MenuCard from './components/MenuCard';
 
 type MenuItem = {
   id: number;
@@ -74,34 +75,28 @@ const App = () => {
         </div>
       </section>
 
-      <section className="menu" id='menu'>
+      <section className="menu" id="menu">
         <div className="section-heading">
           <p className="section-heading__eyebrow">Featured Menu</p>
           <h2>Street food favorites with late-night energy.</h2>
-          <p>A small rotating menu made for fast service, bold flavor, and fresh ingredients from the truck window.</p>
+          <p>
+            A small rotating menu made for fast service, bold flavor, and fresh
+            ingredients from the truck window.
+          </p>
         </div>
 
         <div className="menu__grid">
           {menuItems.map((item) => {
             return (
-              <article className="menu-card" key={item.id}>
-                <div className="menu-card__image-wrap">
-                  <img src={item.image} alt={item.name} />
-                  <span>{item.tag}</span>
-                </div>
-
-                <div className="menu-card__body">
-                  <div className="menu-card__top">
-                    <h3>{item.name}</h3>
-                    <p>{item.price}</p>
-                  </div>
-
-                  <p className="menu-card__description">
-                    {item.description}
-                  </p>
-                </div>
-              </article>
-            )
+              <MenuCard
+                key={item.id}
+                name={item.name}
+                description={item.description}
+                price={item.price}
+                image={item.image}
+                tag={item.tag}
+              />
+            );
           })}
         </div>
       </section>
