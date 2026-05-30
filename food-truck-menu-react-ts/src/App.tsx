@@ -8,11 +8,10 @@ import { menuItems } from "./data/menuItems";
 const App = () => {
   return (
     <main className="app">
-
       <Hero />
-      
+
       <FeaturedMenu />
-      
+
       <About />
     </main>
   );

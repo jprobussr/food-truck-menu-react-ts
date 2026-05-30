@@ -1,0 +1,22 @@
+.menu {
+  width: min(100% - 2rem, var(--container-width));
+  margin: 0 auto;
+  padding: var(--spacing-xl) 0;
+}
+
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+
+@media (max-width: 900px) {
+  .menu__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-card__image-wrap {
+    height: 280px;
+  }
+}

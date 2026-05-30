@@ -1,3 +1,5 @@
+import './MenuCard.css'
+
 type MenuCardProps = {
   name: string;
   description: string;
