@@ -2,12 +2,15 @@ import "./App.css";
 import About from "./components/About";
 import FeaturedMenu from "./components/FeaturedMenu";
 import Hero from "./components/Hero";
-import MenuCard from "./components/MenuCard";
-import { menuItems } from "./data/menuItems";
+import Navbar from "./components/Navbar";
+
 
 const App = () => {
   return (
     <main className="app">
+
+      <Navbar />
+
       <Hero />
 
       <FeaturedMenu />
