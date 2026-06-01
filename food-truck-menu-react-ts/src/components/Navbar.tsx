@@ -1,11 +1,16 @@
-import { useState } from 'react';
-import './Navbar.css';
+import { useState } from "react";
+import "./Navbar.css";
 
-const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Menu', href: '#menu' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+type NavLink = {
+  label: string;
+  href: string;
+};
+
+const navLinks: NavLink[] = [
+  { label: "Home", href: "#home" },
+  { label: "Menu", href: "#menu" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
@@ -27,15 +32,15 @@ const Navbar = () => {
         className="menu-toggle"
         onClick={handleMenuClick}
         aria-label={
-          isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
+          isMenuOpen ? "Close navigation menu" : "Open navigation menu"
         }
       >
-        {isMenuOpen ? 'X' : '☰'}
+        {isMenuOpen ? "X" : "☰"}
       </button>
 
-      <nav className={isMenuOpen ? 'site-nav site-nav--open' : 'site-nav'}>
+      <nav className={isMenuOpen ? "site-nav site-nav--open" : "site-nav"}>
         {navLinks.map((link) => {
-          return <a href={link.href}>{link.label}</a>;
+          return <a key={link.href} href={link.href}>{link.label}</a>;
         })}
       </nav>
     </header>
