@@ -10,7 +10,7 @@ const App = () => {
   return (
     <main className="app">
 
-      <TypeScriptPractice />
+      
 
       <Navbar />
 

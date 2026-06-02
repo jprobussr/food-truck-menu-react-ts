@@ -1,4 +1,4 @@
-import "./TypeScriptPractice.css";
+import './TypeScriptPractice.css';
 
 type FoodTruck = {
   name: string;
@@ -6,7 +6,7 @@ type FoodTruck = {
   isOpen: boolean;
 };
 
-type MenuStatus = "popular" | "regular" | "sold-out";
+type MenuStatus = 'popular' | 'regular' | 'sold-out';
 
 type PracticeMenuItem = {
   id: number;
@@ -18,19 +18,19 @@ type PracticeMenuItem = {
 const practiceMenuItems: PracticeMenuItem[] = [
   {
     id: 1,
-    name: "Smash Burger",
+    name: 'Smash Burger',
     price: 12,
-    status: 'sold-out',
+    status: 'popular',
   },
   {
     id: 2,
-    name: "Loaded Fries",
+    name: 'Loaded Fries',
     price: 8,
-    status: 'regular',
+    status: 'sold-out',
   },
   {
     id: 3,
-    name: "Street Tacos",
+    name: 'Street Tacos',
     price: 10,
     status: 'popular',
   },
@@ -47,14 +47,30 @@ const getStatusLabel = (status: MenuStatus): string => {
 
   if (status === 'sold-out') {
     return 'Sold Out';
-  } 
+  }
 
-  return 'Regular'
+  return 'Regular';
+};
+
+const getAvailableItems = (items: PracticeMenuItem[]): PracticeMenuItem[] => {
+  return items.filter((item) => {
+    return item.status !== 'sold-out';
+  });
+};
+
+const findMenuItemByName = (items: PracticeMenuItem[], name: string): PracticeMenuItem | undefined => {
+  return items.find((item) => {
+    return item.name === name;
+  })
 }
 
 const TypeScriptPractice = () => {
+  const availableItems = getAvailableItems(practiceMenuItems);
+
+  const featuredItem = findMenuItemByName(practiceMenuItems, 'Street Tacos');
+
   const foodTruck: FoodTruck = {
-    name: "Fire & Fork",
+    name: 'Fire & Fork',
     menuItemCount: 4,
     isOpen: false,
   };
@@ -78,7 +94,7 @@ const TypeScriptPractice = () => {
 
           <article className="ts-practice__card">
             <span>boolean</span>
-            <p>Status: {foodTruck.isOpen ? "Open" : "Closed"}</p>
+            <p>Status: {foodTruck.isOpen ? 'Open' : 'Closed'}</p>
           </article>
         </div>
 
@@ -88,12 +104,34 @@ const TypeScriptPractice = () => {
           {practiceMenuItems.map((item) => {
             return (
               <li key={item.id}>
-                {item.name} - ${formatPrice(item.price)}{" "}
+                {item.name} - ${formatPrice(item.price)}{' '}
                 {getStatusLabel(item.status)}
               </li>
             );
           })}
         </ul>
+
+        <h3>Available Items</h3>
+
+        <ul>
+          {availableItems.map((item) => {
+            return (
+              <li key={item.id}>
+                {item.name} - {formatPrice(item.price)}
+              </li>
+            );
+          })}
+        </ul>
+
+        <h3>Featured Item</h3>
+
+        {featuredItem ? (
+          <p>
+            {featuredItem.name} costs {formatPrice(featuredItem.price)}
+          </p>
+        ): (
+          <p>No featured item found.</p>
+        )}
       </div>
     </section>
   );
